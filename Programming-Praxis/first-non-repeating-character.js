@@ -1,5 +1,5 @@
-// Link: http://programmingpraxis.com/2011/08/19/first-non-repeating-character/
-// 返回第一个没有重复让字符
+// http://programmingpraxis.com/2011/08/19/first-non-repeating-character/
+// 返回第一个没有重复的字符
 
 function getFirstUniqueChar(s) {
   var map = (function(map, len, i, c) {
