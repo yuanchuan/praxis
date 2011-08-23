@@ -14,3 +14,13 @@ function getFirstUniqueChar(s) {
   return -1;
 }
 
+
+// 使用 mongodb
+function getFirstUniqueChar(s) {
+  var cnt = db.test.remove() || db.test,
+    doc = (function(map, len, i) {
+      while (i < len) cnt.update({name:s.charAt(i++)},{$inc:{value:1}},true);
+      return cnt.findOne({value:1});
+    }({}, s.length, 0));
+   return doc && doc.name || -1;
+}
