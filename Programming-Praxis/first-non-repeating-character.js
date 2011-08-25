@@ -7,7 +7,7 @@ function getFirstUniqueChar(s) {
     return map;
   }({}, s.length, 0));
    
-  for (key in map) {
+  for (var key in map) {
     if (map[key] == 1) return key;
   }
    
@@ -17,10 +17,10 @@ function getFirstUniqueChar(s) {
 
 // 使用 mongodb
 function getFirstUniqueChar(s) {
-  var cnt = db.test.remove() || db.test,
+  var clt = db.test.remove() || db.test,
     doc = (function(map, len, i) {
-      while (i < len) cnt.update({name:s.charAt(i++)},{$inc:{value:1}},true);
-      return cnt.findOne({value:1});
+      while (i < len) clt.update({name:s.charAt(i++)},{$inc:{value:1}},true);
+      return clt.findOne({value:1});
     }({}, s.length, 0));
-   return doc && doc.name || -1;
+  return doc && doc.name || -1;
 }
