@@ -6,11 +6,11 @@ function getFirstUniqueChar(s) {
     while (i < len) map[c = s.charAt(i++)] = map[c] ? (map[c] + 1) : 1;
     return map;
   }({}, s.length, 0));
-   
+
   for (var key in map) {
     if (map[key] == 1) return key;
   }
-   
+
   return -1;
 }
 
@@ -23,4 +23,10 @@ function getFirstUniqueChar(s) {
       return clt.findOne({value:1});
     }({}, s.length, 0));
   return doc && doc.name || -1;
+}
+
+
+/* Date: 2017.2.19 */
+function getFirstUniqueChar(s) {
+  return s[s.split('').map(c => s.split(c).length).indexOf(2)];
 }
